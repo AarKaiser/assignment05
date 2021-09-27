@@ -2,7 +2,7 @@
 
 // Mapping DOMS
 
-selectables = document.querySelector("#selectable")
+selectables = document.querySelector("#selectables")
 
 // Declaring of variables
 
@@ -30,14 +30,17 @@ $("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
 
 function displaySlots() {
 for (let i = 0; (i >= 11) && (i <=6); i++) {
-selectables.createElement[i]("li")
-selectables.setAttribute[i]("class", "ui-widget-content")   
-selectables.this[i].textContent = "x";
+    let li = selectables.selectables.createElement("li");
+    li.appendChild(document.createTextNode(i));
+    ul.appendChild(li);
+// selectables.createElement("li")
+// selectables.setAttribute[i]("class", "ui-widget-content")   
+// selectables.this[i].textContent = "x";
 
     }
 }
 
-// Loads the planner
+// Starts (loads) the planner
 function startPlanner(){
     // Displaying date in header
     displayDate();
