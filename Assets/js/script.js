@@ -2,7 +2,8 @@
 
 // Mapping DOMS
 
-selectables = document.querySelector("#selectables")
+selectables = document.querySelector("#selectables");
+currentDate = document.querySelector("#currentDate")
 
 // Declaring of variables
 
@@ -23,7 +24,7 @@ plannerDay = [
 
 function displayDate() {
 let today = moment();
-$("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
+$(currentDate).text(today.format("dddd, MMMM Do, YYYY"));
 }
 
 // Function for displaying slots
