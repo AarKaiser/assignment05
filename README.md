@@ -4,8 +4,8 @@ Contents of this folder are:
 
 1) This README.me file.
 2) A "Develop" folder which contains the assignment, which is title "index.html" and it's associated "assets" folder.
-4) These files are all hosted on a repository and the finished assignment can be accessed directly at "https://aarkaiser.github.io/assignment05/Develop/" on  a browswer.
-5) The Github repo for the assignment is available at "https://github.com/AarKaiser/assignment05"
+4) These files are all hosted on a repository and the finished assignment can be accessed directly at "https://aarkaiser.github.io/work_day_scheduler/" on  a browswer.
+5) The Github repo for the assignment is available at "https://github.com/AarKaiser/work_day_scheduler"
 
 Website Mockup:
 
