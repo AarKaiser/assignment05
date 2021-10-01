@@ -2,13 +2,14 @@
 
 // Mapping DOMS
 
-slotsEl = document.querySelector(".container");
-currentDate = document.querySelector("#currentDate");
+let slotsEl = document.querySelector(".container");
+
 
 // Declaring of variables
 
 let currentHour = parseInt(moment().format("HH"));
 let savedItems = JSON.parse(localStorage.getItem("schdeule"));
+let currentDate = document.querySelector("#currentDate");
 
 // Establishing timeSlot Object Array
 let timeSlots = []
@@ -189,7 +190,7 @@ function displaySlots() {
   function storage (event) {
     console.log("Storage Function")
     console.log(event.target)
-    const indexOfTime = event.target.dataset.index
+    let indexOfTime = event.target.dataset.index
     // console.log(event.target.previousElementSibling.value)
     // console.log(event.target.parentElement.previousElementSibling.value)
     let valueFromText = "";
@@ -208,5 +209,6 @@ function displaySlots() {
 }
 
 displaySlots();
+displayDate();
 
 // End of js document //
