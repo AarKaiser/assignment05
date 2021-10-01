@@ -9,14 +9,16 @@ currentDate = document.querySelector("#currentDate");
 
 let currentHour = parseInt(moment().format("HH"));
 let savedItems = JSON.parse(localStorage.getItem("schdeule"));
-let newText;
-let currentSlot = 0;
 
 // Establishing timeSlot Object Array
-
-let timeSlots = [
-  {
-    slotTime: "00:00 HRS",
+let timeSlots = []
+if(localStorage.getItem("schedule")){
+  timeSlots = JSON.parse(localStorage.getItem("schedule"))
+}else {
+  timeSlots = [
+  
+    {
+      slotTime: "00:00 HRS",
     slotContent: "",
   },
 
@@ -135,6 +137,7 @@ let timeSlots = [
     slotContent: "",
   },
 ];
+}
 
 // console.log(timeSlots[0].slotTime);
 
@@ -143,13 +146,6 @@ let timeSlots = [
 function displayDate() {
   let today = moment();
   $(currentDate).text(today.format("dddd, MMMM Do, YYYY"));
-}
-
-// Function for Scheduler Web App
-
-function scheduler() {
-  displayDate();
-  displaySlots();
 }
 
 // Function for displaying slots
@@ -163,13 +159,12 @@ function displaySlots() {
     content.textContent = timeSlots[i].slotTime;
     let textBox = document.createElement("textarea");
     textBox.setAttribute("id", "slotContent");
-    textBox.textContent = timeSlots[i].slotContent;
+    textBox.value = timeSlots[i].slotContent;
     let saveButton = document.createElement("button");
     saveButton.setAttribute("class", "col-2 saveBtn");
-    saveButton.setAttribute("id", "BTN" + [i]);
-    saveButton.innerHTML = `<i class="fas fa-save"></i>`;
-    saveButton.addEventListener("click", saveLocal);
-    currentSlot++;
+    saveButton.setAttribute("data-index", i);
+    saveButton.innerHTML = `<i class="fas fa-save" data-index=${i}></i>`;
+    saveButton.addEventListener("click", storage);
     // console.log(currentSlot);
     // console.log(i);
     // console.log(currentHour);
@@ -191,35 +186,27 @@ function displaySlots() {
 
   // Save to Local Storage
 
-  function saveLocal(event) {
-    
-    // console.log(event.target.previousElementSibling.value);
-    // console.log(currentSlot)
-    let pushText = event.target.previousElementSibling.value;
-    console.log(pushText);
+  function storage (event) {
+    console.log("Storage Function")
+    console.log(event.target)
+    const indexOfTime = event.target.dataset.index
+    // console.log(event.target.previousElementSibling.value)
+    // console.log(event.target.parentElement.previousElementSibling.value)
+    let valueFromText = "";
+    if(!event.target.previousElementSibling) {
+      valueFromText = event.target.parentElement.previousElementSibling.value
+    }else{
+      valueFromText = event.target.previousElementSibling.value;
+    }
 
-    timeSlots[currentSlot].slotContent = pushText;
-
-
-    // console.log(
-    //   "Slot " + currentSlot + " equals: " + timeSlots[currentSlot].slotContent
-    // );
+    console.log(valueFromText)
+    timeSlots[indexOfTime].slotContent = valueFromText
 
     localStorage.setItem("schedule", JSON.stringify(timeSlots));
 
-    //with hour and value you will save to local storage using the hour as the key and the value as the value
-    //localStorage.setItem('hour',value)
   }
 }
 
-function displaySaved() {
-  
-  for (let i = 0; i < 24; i++) {
-    textBox[i].textContnet = savedItems[i].slotTime;
-    textBox[i].textContent = savedItems[i];
-  }
-}
+displaySlots();
 
-scheduler();
-
-// Submitting incomplete, as I have no idea how to make this work and need extra help from my tutor //
+// End of js document //
