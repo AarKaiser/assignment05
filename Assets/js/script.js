@@ -4,7 +4,6 @@
 
 let slotsEl = document.querySelector(".container");
 
-
 // Declaring of variables
 
 let currentHour = parseInt(moment().format("HH"));
@@ -12,132 +11,131 @@ let savedItems = JSON.parse(localStorage.getItem("schdeule"));
 let currentDate = document.querySelector("#currentDate");
 
 // Establishing timeSlot Object Array
-let timeSlots = []
-if(localStorage.getItem("schedule")){
-  timeSlots = JSON.parse(localStorage.getItem("schedule"))
-}else {
+let timeSlots = [];
+if (localStorage.getItem("schedule")) {
+  timeSlots = JSON.parse(localStorage.getItem("schedule"));
+} else {
   timeSlots = [
-  
     {
       slotTime: "00:00 HRS",
-    slotContent: "",
-  },
+      slotContent: "",
+    },
 
-  {
-    slotTime: "01:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "01:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "02:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "02:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "03:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "03:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "04:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "04:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "05:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "05:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "06:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "06:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "07:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "07:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "08:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "08:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "09:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "09:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "10:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "10:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "11:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "11:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "12:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "12:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "13:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "13:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "14:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "14:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "15:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "15:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "16:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "16:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "17:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "17:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "18:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "18:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "19:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "19:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "20:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "20:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "21:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "21:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "22:00 HRS",
-    slotContent: "",
-  },
+    {
+      slotTime: "22:00 HRS",
+      slotContent: "",
+    },
 
-  {
-    slotTime: "23:00 HRS",
-    slotContent: "",
-  },
-];
+    {
+      slotTime: "23:00 HRS",
+      slotContent: "",
+    },
+  ];
 }
 
 // console.log(timeSlots[0].slotTime);
@@ -187,28 +185,28 @@ function displaySlots() {
 
   // Save to Local Storage
 
-  function storage (event) {
-    console.log("Storage Function")
-    console.log(event.target)
-    let indexOfTime = event.target.dataset.index
+  function storage(event) {
+    console.log("Storage Function");
+    console.log(event.target);
+    let indexOfTime = event.target.dataset.index;
     // console.log(event.target.previousElementSibling.value)
     // console.log(event.target.parentElement.previousElementSibling.value)
     let valueFromText = "";
-    if(!event.target.previousElementSibling) {
-      valueFromText = event.target.parentElement.previousElementSibling.value
-    }else{
+    if (!event.target.previousElementSibling) {
+      valueFromText = event.target.parentElement.previousElementSibling.value;
+    } else {
       valueFromText = event.target.previousElementSibling.value;
     }
 
-    console.log(valueFromText)
-    timeSlots[indexOfTime].slotContent = valueFromText
+    console.log(valueFromText);
+    timeSlots[indexOfTime].slotContent = valueFromText;
 
     localStorage.setItem("schedule", JSON.stringify(timeSlots));
-
   }
 }
 
+// Calling Functions / Initialzing WebApp.
 displaySlots();
 displayDate();
 
-// End of js document //
+// End of JavaScript Document //
